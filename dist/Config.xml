@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<!--The encryption Key-->
+	<EncryptionPassword>TopSecretPasswordHere</EncryptionPassword>
+	<!-- 
+	Set attribute DeleteWhenFinished to True to the Send node to clear files that are finished after each step of the processing. 
+	If not, use the _DeleteAllManually.ps1 script to remove all processed files later 
+	-->
+	<Send DeleteWhenFinished="True">
+		<!--The source folder-->
+		<SourceFolder>C:\_code\EncryptAndMigrateFiles\sourceFolderSend</SourceFolder>
+		<!--The folder where encrypted archives will be placed before sending-->
+		<TargetZipFolder>C:\_code\EncryptAndMigrateFiles\targetSendZipFolder</TargetZipFolder>
+		<!--The folder where encrypted archives will be sent to-->
+		<TargetCopyFolder>C:\_code\EncryptAndMigrateFiles\targetSendCopyFolder</TargetCopyFolder>
+	</Send>
+	<!-- 
+	Set attribute DeleteWhenFinished to True to the Receive node clear files that are finished after each step of the processing.
+	If not, use the _DeleteAllManually.ps1 script to remove all processed files later  
+	-->
+	<Receive DeleteWhenFinished="True">
+		<!--The source folder-->
+		<SourceFolder>C:\_code\EncryptAndMigrateFiles\sourceFolderReceive</SourceFolder>
+		<!--The folder where encrypted archives will be received-->
+		<TargetCopyFolder>C:\_code\EncryptAndMigrateFiles\targetReceiveCopyFolder</TargetCopyFolder>
+		<!--The folder where encrypted archives will be unzipped to-->
+		<TargetUnzipFolder>C:\_code\EncryptAndMigrateFiles\targetReceiveUnzipFolder</TargetUnzipFolder>
+	</Receive>
+	<Tests IncludeLargeFiles="False">
+		<TestDataFolder>C:\_code\EncryptAndMigrateFiles\_TestData</TestDataFolder>
+	</Tests>
+</Root>
