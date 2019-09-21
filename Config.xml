@@ -4,7 +4,7 @@
 	<EncryptionPassword>TopSecretPasswordHere</EncryptionPassword>
 	<!-- 
 	Set attribute DeleteWhenFinished to True to the Send node to clear files that are finished after each step of the processing. 
-	If not, use the _DeleteAllManually.ps1 script to remove all processed files later 
+	If not, use the DeleteAllManually.bat executable script to remove all processed files later.
 	-->
 	<Send DeleteWhenFinished="True">
 		<!--The source folder-->
@@ -16,7 +16,7 @@
 	</Send>
 	<!-- 
 	Set attribute DeleteWhenFinished to True to the Receive node clear files that are finished after each step of the processing.
-	If not, use the _DeleteAllManually.ps1 script to remove all processed files later  
+	If not, use the DeleteAllManually.bat executable script to remove all processed files later.
 	-->
 	<Receive DeleteWhenFinished="True">
 		<!--The source folder-->
