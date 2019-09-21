@@ -32,6 +32,20 @@ foreach($itemSearchPattern in $itemSearchPatterns){
 		}
 	}
 }
+### Clear test folders ###
+$folders = @()
+$folders += $config.Root.Send.SourceFolder
+$folders += $config.Root.Send.TargetZipFolder
+$folders += $config.Root.Send.TargetCopyFolder
+$folders += $config.Root.Receive.SourceFolder
+$folders += $config.Root.Receive.TargetCopyFolder
+$folders += $config.Root.Receive.TargetUnzipFolder
+
+$fso = New-Object -ComObject scripting.filesystemobject
+foreach($folder in $folders){
+	$fso.DeleteFolder($folder)
+	$fso.CreateFolder($folder)
+}
 ### Remove large test file ###
 $largeTestfilePath = ($config.Root.Tests.TestDataFolder + "\" + "Unzipped" + "\" + "LargeFile.txt")
 Remove-Item -Path $largeTestfilePath
