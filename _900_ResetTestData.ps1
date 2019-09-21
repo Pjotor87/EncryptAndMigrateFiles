@@ -17,7 +17,9 @@ $folders += $config.Root.Receive.TargetUnzipFolder
 
 $fso = New-Object -ComObject scripting.filesystemobject
 foreach($folder in $folders){
-	$fso.DeleteFolder($folder)
+	if(Test-Path $folder -PathType Container){
+		$fso.DeleteFolder($folder)
+	}
 	$fso.CreateFolder($folder)
 }
 
