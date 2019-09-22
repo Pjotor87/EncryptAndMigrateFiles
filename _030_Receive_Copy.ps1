@@ -57,7 +57,12 @@ foreach ($item in $items){
 			Add-Content -Path $progressFilePath -Value $progressStartText
 			Add-Content -Path $progressFilePath -Value $item.Name
 			Add-Content -Path $progressFilePath -Value $i
-			Start-BitsTransfer -Source ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Description ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath) -DisplayName "File copy operation" -Verbose
+			try {
+				Start-BitsTransfer -Source ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Description ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath) -DisplayName "File copy operation" -Verbose
+			} catch {
+				Write-Output ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath)
+				Copy-Item -Path ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Verbose
+			}
 			Add-Content -Path $progressFilePath -Value $progressEndText
 			Add-Content -Path $deletionReadyPath -Value ($sourceFolder + "\" + $item.Name)
 			Add-Content -Path $deletionReadyPath -Value $operationType
