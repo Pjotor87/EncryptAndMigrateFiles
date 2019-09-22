@@ -1,6 +1,8 @@
 # What is this?
 A PowerShell project for copying lots of filesystem content from one place to another.
+
 The main feature is to be able to abort the copy and zipping operations and be able to resume where you left off at a later time.
+
 Also does zipping, unzipping, encryption and decryption of the files being copied.
 
 ![Sketch](/_Docs/Sketch.png?raw=true "Sketch")
