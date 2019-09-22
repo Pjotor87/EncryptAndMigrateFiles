@@ -8,6 +8,7 @@ Also does zipping, unzipping, encryption and decryption of the files being copie
 ![Sketch](/_Docs/Sketch.png?raw=true "Sketch")
 
 # Dependencies
+PowerShell version 5 or higher
 Uses the PowerShell module "7zip4PowerShell" to do encryption and zip/unzip operations (PowerShell will prompt for installation of this module when running)
 
 # How to use
