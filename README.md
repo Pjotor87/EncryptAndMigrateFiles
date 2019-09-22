@@ -3,6 +3,8 @@ A PowerShell project for copying lots of filesystem content from one place to an
 The main feature is to be able to abort the copy and zipping operations and be able to resume where you left off at a later time.
 Also does zipping, unzipping, encryption and decryption of the files being copied.
 
+![Sketch](/_Docs/Sketch.png?raw=true "Sketch")
+
 # Dependencies
 - Uses the PowerShell module "7zip4PowerShell" to do encryption and zip/unzip operations (PowerShell will prompt for installation of this module when running)
 
@@ -15,7 +17,7 @@ Use Send.bat to Zip, encrypt and copy files.
 Use Receive.bat to Copy files, decrypt and unzip.
 
 # How to run tests
-1. Make a directory at C:\_Code and clone the project from there ->
+1. Make a directory at C:\\_Code and clone the project from there ->
 2. Run PowerShell as administrator ->
 3. Got to the cloned folder and run "_999_TestAll.ps1".
 
