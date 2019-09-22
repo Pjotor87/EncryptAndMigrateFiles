@@ -13,19 +13,20 @@ Uses the PowerShell module "7zip4PowerShell" to do encryption and zip/unzip oper
 2. Go to the "dist" folder
 3. Setup file paths and settings by editing the Config.xml file
 
-Use Send.bat to Zip, encrypt and copy files.
-Use Receive.bat to Copy files, decrypt and unzip.
+Use Send.bat to Zip, encrypt and copy files
+
+Use Receive.bat to Copy files, decrypt and unzip
 
 # How to run tests
 1. Make a directory at C:\\_Code and clone the project from there
 2. Run PowerShell as administrator
-3. Got to the cloned folder and run "_999_TestAll.ps1".
+3. Got to the cloned folder and run "_999_TestAll.ps1"
 
 # How to package for GitHub
 The project needs a large file for running tests and GitHub won't allow uploading large files, so before pushing anything to GitHub follow these steps:
 1. Run PowerShell as administrator
-2. Got to the cloned folder and run "_1000_Package.ps1".
-3. Now you can add, commit and push.
+2. Got to the cloned folder and run "_1000_Package.ps1"
+3. Now you can add, commit and push
 
 # TODO
 - Add switches in Config.xml file to select which processes to run or skip
