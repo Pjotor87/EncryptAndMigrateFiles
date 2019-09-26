@@ -62,9 +62,7 @@ foreach ($item in $items){
 				Write-Output ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath)
 				Copy-Item -Path ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Verbose
 			}
-			Add-Content -Path $progressFilePath -Value $progressEndText
-			Add-Content -Path $deletionReadyPath -Value ($sourceFolder + "\" + $item.Name)
-			Add-Content -Path $deletionReadyPath -Value $operationType
+			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
 		}
 		catch
 		{

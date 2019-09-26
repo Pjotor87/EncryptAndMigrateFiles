@@ -22,3 +22,9 @@ function Set-ProgressStarted($progressFilePath, $progressStartText, $itemname, $
 	Add-Content -Path $progressFilePath -Value $item.Name
 	Add-Content -Path $progressFilePath -Value $i
 }
+
+function Set-ProgressCompleted($progressFilePath, $progressEndText, $deletionReadyPath, $deletionPath, $operationType){
+	Add-Content -Path $progressFilePath -Value $progressEndText
+	Add-Content -Path $deletionReadyPath -Value $deletionPath
+	Add-Content -Path $deletionReadyPath -Value $operationType
+}

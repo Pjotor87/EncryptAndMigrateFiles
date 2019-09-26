@@ -58,9 +58,7 @@ foreach ($item in $items){
 			Write-Output ("Zipping: " + $item.Name + " to: " + $archiveTargetPath)
 			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			Compress-7Zip -Path ($sourceFolder + "\" + $item.Name) -ArchiveFileName $archiveTargetPath -Format SevenZip -Password $encryptionPassword -EncryptFilenames
-			Add-Content -Path $progressFilePath -Value $progressEndText
-			Add-Content -Path $deletionReadyPath -Value ($sourceFolder + "\" + $item.Name)
-			Add-Content -Path $deletionReadyPath -Value $operationType
+			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
 		}
 		catch
 		{

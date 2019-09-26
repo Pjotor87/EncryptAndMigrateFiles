@@ -58,9 +58,7 @@ foreach ($item in $items){
 			Write-Output ("Unzipping: " + $item.Name + " to: " + $targetFolder)
 			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			Expand-7Zip -ArchiveFileName ($sourceFolder + "\" + $item.Name) -TargetPath ($targetFolder) -Password $encryptionPassword
-			Add-Content -Path $progressFilePath -Value $progressEndText
-			Add-Content -Path $deletionReadyPath -Value ($sourceFolder + "\" + $item.Name)
-			Add-Content -Path $deletionReadyPath -Value $operationType
+			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
 		}
 		catch
 		{
