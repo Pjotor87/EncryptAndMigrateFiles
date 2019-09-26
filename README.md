@@ -33,7 +33,6 @@ The project needs a large file for running tests and GitHub won't allow uploadin
 
 # TODO
 - Add switches in Config.xml file to select which processes to run or skip
-- Refactor code into functions (Check if there's any best practices with PowerShell for this. To call functions from a common file)
 - Add progress to the Progress files created during each operation
 - Support for FTP/SFTP
 - Support for OneDrive
