@@ -1,3 +1,4 @@
+. ($PSScriptRoot + "\_Functions.ps1")
 Install-Module -Name "7Zip4PowerShell" -Verbose
 [xml]$config = Get-Content -Path ($PSScriptRoot + "\" + "Config.xml")
 $encryptionPassword = $config.Root.EncryptionPassword
@@ -55,9 +56,7 @@ foreach ($item in $items){
 		try
 		{
 			Write-Output ("Zipping: " + $item.Name + " to: " + $archiveTargetPath)
-			Add-Content -Path $progressFilePath -Value $progressStartText
-			Add-Content -Path $progressFilePath -Value $item.Name
-			Add-Content -Path $progressFilePath -Value $i
+			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			Compress-7Zip -Path ($sourceFolder + "\" + $item.Name) -ArchiveFileName $archiveTargetPath -Format SevenZip -Password $encryptionPassword -EncryptFilenames
 			Add-Content -Path $progressFilePath -Value $progressEndText
 			Add-Content -Path $deletionReadyPath -Value ($sourceFolder + "\" + $item.Name)
@@ -65,23 +64,13 @@ foreach ($item in $items){
 		}
 		catch
 		{
-			Write-Output ((Get-Date -Format "yyyy-MM-dd HH:mm:ss") + " -> Was not able to zip file: " + $item.Name)
-			$unhandledItems += ((Get-Date -Format "yyyy-MM-dd HH:mm:ss") + " -> Was not able to zip file: " + $item.Name)
+			$exceptionMessage = Get-ExceptionMessage ("Was not able to zip file: " + $item.Name)
+			Write-Output $exceptionMessage
+			$unhandledItems += $exceptionMessage
 		}
 		$i = $i + 1
 	}
 }
 Remove-Item -Path $progressFilePath
 
-Write-Output "Script finished!"
-if($unhandledItems.Count -gt 0){
-	Write-Output "- - - - - E R R O R   S U M M A R Y - - - - -"
-	foreach ($unhandledItem in $unhandledItems){ Write-Output ($unhandledItem) }
-	Write-Output "- - - - - E R R O R   S U M M A R Y - - - - -"
-	Add-Content -Path $errorsPath -Value "- - - - - E R R O R   S U M M A R Y - - - - -"
-	foreach ($unhandledItem in $unhandledItems){ Add-Content -Path $errorsPath -Value ($unhandledItem) }
-	Add-Content -Path $errorsPath -Value "- - - - - E R R O R   S U M M A R Y - - - - -"
-	Write-Output ("Error logs saved to file: " + $errorsPath)
-} else {
-	Write-Output "No errors when running script!"
-}
+Write-LogInfo $unhandledItems $errorsPath

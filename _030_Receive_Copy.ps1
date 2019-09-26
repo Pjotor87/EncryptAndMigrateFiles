@@ -1,3 +1,4 @@
+. ($PSScriptRoot + "\_Functions.ps1")
 Import-Module BitsTransfer
 [xml]$config = Get-Content -Path ($PSScriptRoot + "\" + "Config.xml")
 $unhandledItems = @()
@@ -54,9 +55,7 @@ foreach ($item in $items){
 		try
 		{
 			Write-Output ("Copying file: " + $item.Name)
-			Add-Content -Path $progressFilePath -Value $progressStartText
-			Add-Content -Path $progressFilePath -Value $item.Name
-			Add-Content -Path $progressFilePath -Value $i
+			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			try {
 				Start-BitsTransfer -Source ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Description ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath) -DisplayName "File copy operation" -Verbose
 			} catch {
@@ -69,23 +68,13 @@ foreach ($item in $items){
 		}
 		catch
 		{
-			Write-Output ((Get-Date -Format "yyyy-MM-dd HH:mm:ss") + " -> Was not able to copy file: " + $item.Name)
-			$unhandledItems += ((Get-Date -Format "yyyy-MM-dd HH:mm:ss") + " -> Was not able to copy file: " + $item.Name)
+			$exceptionMessage = Get-ExceptionMessage ("Was not able to copy file: " + $item.Name)
+			Write-Output $exceptionMessage
+			$unhandledItems += $exceptionMessage
 		}
 		$i = $i + 1
 	}
 }
 Remove-Item -Path $progressFilePath
 
-Write-Output "Script finished!"
-if($unhandledItems.Count -gt 0){
-	Write-Output "- - - - - E R R O R   S U M M A R Y - - - - -"
-	foreach ($unhandledItem in $unhandledItems){ Write-Output ($unhandledItem) }
-	Write-Output "- - - - - E R R O R   S U M M A R Y - - - - -"
-	Add-Content -Path $errorsPath -Value "- - - - - E R R O R   S U M M A R Y - - - - -"
-	foreach ($unhandledItem in $unhandledItems){ Add-Content -Path $errorsPath -Value ($unhandledItem) }
-	Add-Content -Path $errorsPath -Value "- - - - - E R R O R   S U M M A R Y - - - - -"
-	Write-Output ("Error logs saved to file: " + $errorsPath)
-} else {
-	Write-Output "No errors when running script!"
-}
+Write-LogInfo $unhandledItems $errorsPath
