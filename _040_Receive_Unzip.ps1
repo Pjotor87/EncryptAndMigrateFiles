@@ -18,25 +18,10 @@ $excludeFiles = @("_010_Zip.ps1", "_020_Copy.ps1", "_030_Unzip.ps1")
 
 $progressStartText = "## Begin ##"
 $progressEndText = "## End ##"
-### Get last file to not be fully processed ###
-$beginFile = ""
-$beginIndex = "1"
-if(Test-Path $progressFilePath){
-	$progressFileContent = Get-Content -Path $progressFilePath
-	$fileInProgressSwitch = $false
-	foreach($line in $progressFileContent){
-		if($line -eq $progressStartText){
-			$fileInProgressSwitch = $true
-		} elseif($line -eq $progressEndText){
-			$fileInProgressSwitch = $false
-			$beginFile = ""
-		} elseif($fileInProgressSwitch -eq $true -and !($beginFile)){
-			$beginFile = $line
-		} elseif($fileInProgressSwitch -eq $true -and $beginFile){
-			$beginIndex = $line
-		}
-	}
-}
+
+$progress = Get-Progress $progressFilePath
+$beginFile = $progress[0]
+$beginIndex = $progress[1]
 
 $items = Get-ChildItem $sourceFolder
 $i = [int]$beginIndex
