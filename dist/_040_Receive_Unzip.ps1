@@ -42,7 +42,11 @@ foreach ($item in $items){
 		{
 			Write-Output ("Unzipping: " + $item.Name + " to: " + $targetFolder)
 			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
+			
+			$stopwatch = [system.diagnostics.stopwatch]::StartNew()
 			Expand-7Zip -ArchiveFileName ($sourceFolder + "\" + $item.Name) -TargetPath ($targetFolder) -Password $encryptionPassword
+			Write-Output ("Time it took to complete process: " + $stopwatch.Elapsed)
+			
 			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
 		}
 		catch

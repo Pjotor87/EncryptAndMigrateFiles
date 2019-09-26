@@ -42,10 +42,14 @@ foreach ($item in $items){
 			Write-Output ("Copying file: " + $item.Name)
 			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			try {
+				$stopwatch = [system.diagnostics.stopwatch]::StartNew()
 				Start-BitsTransfer -Source ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Description ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath) -DisplayName "File copy operation" -Verbose
+				Write-Output ("Time it took to complete process: " + $stopwatch.Elapsed)
 			} catch {
 				Write-Output ("Copying file: " + $item.Name + " to location: " + $archiveTargetPath)
+				$stopwatch = [system.diagnostics.stopwatch]::StartNew()
 				Copy-Item -Path ($sourceFolder + "\" + $item.Name) -Destination $archiveTargetPath -Verbose
+				Write-Output ("Time it took to complete process: " + $stopwatch.Elapsed)
 			}
 			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
 		}
