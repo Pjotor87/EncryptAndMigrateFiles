@@ -1,3 +1,6 @@
+# Status
+Works for files and files directly under one folder. Recursive archiving is in progress.
+
 # What is this?
 A PowerShell project for copying lots of filesystem content from one place to another.
 
@@ -31,8 +34,14 @@ The project needs a large file for running tests and GitHub won't allow uploadin
 2. Got to the cloned folder and run "_1000_Package.ps1"
 3. Now you can add, commit and push
 
-# TODO
+# TODO (High)
+- Recursive archiving (Test with complex folder structures)
+
+# TODO (Medium)
+- Remove Try/Catch for when BitsTransfer module fails to import and replace with a test for PowerShell version
 - Add switches in Config.xml file to select which processes to run or skip
+
+# TODO (Low)
 - Add progress to the Progress files created during each operation
 - Support for FTP/SFTP
 - Support for OneDrive
