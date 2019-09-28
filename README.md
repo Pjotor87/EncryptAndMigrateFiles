@@ -1,6 +1,3 @@
-# Status
-Works for files and files directly under one folder. Recursive archiving is in progress.
-
 # What is this?
 A PowerShell project for copying lots of filesystem content from one place to another.
 
