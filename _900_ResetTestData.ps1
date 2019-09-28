@@ -26,14 +26,14 @@ foreach($folder in $folders){
 $largeFiles = @()
 $largeFiles += "LargeFile.txt"
 $largeFiles += "_data2.7z"
-Get-ChildItem -Verbose -Path ($config.Root.Tests.TestDataFolder + "\" + "Unzipped") -Recurse | Foreach-object { 
+Get-ChildItem -Verbose -Path ($config.Root.Tests.TestDataFolder + "\" + "Unzipped") | Foreach-object { 
 	if($config.Root.Tests.IncludeLargeFiles -ne "True" -and $largeFiles.Contains($_.Name)){
 		Write-Output ("Skipping large file: " + $_.Name)
 	} else {
 		Copy-item -Verbose -Recurse -path $_.FullName -Destination ($config.Root.Send.SourceFolder + "\" + $_.Name)
 	}
 }
-Get-ChildItem -Verbose -Path ($config.Root.Tests.TestDataFolder + "\" + "Zipped") -Recurse | Foreach-object {
+Get-ChildItem -Verbose -Path ($config.Root.Tests.TestDataFolder + "\" + "Zipped") | Foreach-object {
 	if($config.Root.Tests.IncludeLargeFiles -ne "True" -and $largeFiles.Contains($_.Name)){
 		Write-Output ("Skipping large file: " + $_.Name)
 	} else {

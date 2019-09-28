@@ -49,7 +49,7 @@ foreach ($item in $items){
 			Add-Content -Path $progressFilePath -Value $progressStartText
 			Add-Content -Path $progressFilePath -Value $item
 			Add-Content -Path $progressFilePath -Value $i
-			Remove-Item -Path $item -Verbose
+			Remove-Item -Path $item -Verbose -Confirm:$false -Recurse
 			Add-Content -Path $progressFilePath -Value $progressEndText
 		}
 		catch
