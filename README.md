@@ -12,7 +12,8 @@ Also does zipping, unzipping, encryption and decryption of the files being copie
 
 # Dependencies
 PowerShell version 5 or higher
-Uses the PowerShell module "7zip4PowerShell" to do encryption and zip/unzip operations (PowerShell will prompt for installation of this module when running)
+Uses the PowerShell module "7zip4PowerShell" to do unzip operations (PowerShell will prompt for installation of this module when running)
+7zip command line
 
 # How to use
 1. Clone the project
@@ -34,12 +35,10 @@ The project needs a large file for running tests and GitHub won't allow uploadin
 2. Got to the cloned folder and run "_1000_Package.ps1"
 3. Now you can add, commit and push
 
-# TODO (High)
-- Recursive archiving (Test with complex folder structures)
-
 # TODO (Medium)
 - Remove Try/Catch for when BitsTransfer module fails to import and replace with a test for PowerShell version
 - Add switches in Config.xml file to select which processes to run or skip
+- Remove dependency to 7zip4Powershell
 
 # TODO (Low)
 - Add progress to the Progress files created during each operation
