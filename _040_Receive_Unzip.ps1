@@ -1,6 +1,6 @@
 . ($PSScriptRoot + "\_Functions.ps1")
 [xml]$config = Get-Content -Path ($PSScriptRoot + "\" + "Config.xml")
-$encryptionPassword = $config.Root.EncryptionPassword
+$encryptionPassword = $config.Root.EncryptionPassword -replace "'", ""
 $unhandledItems = @()
 $operationType = "ReceiveUnzip"
 
