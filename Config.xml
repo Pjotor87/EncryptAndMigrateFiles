@@ -6,7 +6,7 @@
 	Set attribute DeleteWhenFinished to True to the Send node to clear files that are finished after each step of the processing. 
 	If not, use the DeleteAllManually.bat executable script to remove all processed files later.
 	-->
-	<Send DeleteWhenFinished="True">
+	<Send DeleteWhenFinished="True" ZipFromSourceFolder="True" CopyFromZipToTargetFolder="True">
 		<!--The source folder-->
 		<SourceFolder>C:\_code\EncryptAndMigrateFiles\sourceFolderSend</SourceFolder>
 		<!--The folder where encrypted archives will be placed before sending-->
@@ -18,7 +18,7 @@
 	Set attribute DeleteWhenFinished to True to the Receive node clear files that are finished after each step of the processing.
 	If not, use the DeleteAllManually.bat executable script to remove all processed files later.
 	-->
-	<Receive DeleteWhenFinished="True">
+	<Receive DeleteWhenFinished="True" CopyFromSourceToTargetFolder="True" UnzipToTargetFolder="True">
 		<!--The source folder-->
 		<SourceFolder>C:\_code\EncryptAndMigrateFiles\sourceFolderReceive</SourceFolder>
 		<!--The folder where encrypted archives will be received-->
