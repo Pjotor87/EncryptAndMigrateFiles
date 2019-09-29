@@ -8,11 +8,11 @@
 	-->
 	<Send DeleteWhenFinished="True" ZipFromSourceFolder="True" CopyFromZipToTargetFolder="True">
 		<!--The source folder-->
-		<SourceFolder>C:\_code\EncryptAndMigrateFiles\sourceFolderSend</SourceFolder>
+		<SourceFolder>C:\_code\EncryptAndMigrateFiles\110_sourceFolderSend</SourceFolder>
 		<!--The folder where encrypted archives will be placed before sending-->
-		<TargetZipFolder>C:\_code\EncryptAndMigrateFiles\targetSendZipFolder</TargetZipFolder>
+		<TargetZipFolder>C:\_code\EncryptAndMigrateFiles\120_targetSendZipFolder</TargetZipFolder>
 		<!--The folder where encrypted archives will be sent to-->
-		<TargetCopyFolder>C:\_code\EncryptAndMigrateFiles\targetSendCopyFolder</TargetCopyFolder>
+		<TargetCopyFolder>C:\_code\EncryptAndMigrateFiles\130_targetSendCopyFolder</TargetCopyFolder>
 	</Send>
 	<!-- 
 	Set attribute DeleteWhenFinished to True to the Receive node clear files that are finished after each step of the processing.
@@ -20,11 +20,11 @@
 	-->
 	<Receive DeleteWhenFinished="True" CopyFromSourceToTargetFolder="True" UnzipToTargetFolder="True">
 		<!--The source folder-->
-		<SourceFolder>C:\_code\EncryptAndMigrateFiles\sourceFolderReceive</SourceFolder>
+		<SourceFolder>C:\_code\EncryptAndMigrateFiles\210_sourceFolderReceive</SourceFolder>
 		<!--The folder where encrypted archives will be received-->
-		<TargetCopyFolder>C:\_code\EncryptAndMigrateFiles\targetReceiveCopyFolder</TargetCopyFolder>
+		<TargetCopyFolder>C:\_code\EncryptAndMigrateFiles\220_targetReceiveCopyFolder</TargetCopyFolder>
 		<!--The folder where encrypted archives will be unzipped to-->
-		<TargetUnzipFolder>C:\_code\EncryptAndMigrateFiles\targetReceiveUnzipFolder</TargetUnzipFolder>
+		<TargetUnzipFolder>C:\_code\EncryptAndMigrateFiles\230_targetReceiveUnzipFolder</TargetUnzipFolder>
 	</Receive>
 	<Tests IncludeLargeFiles="True">
 		<TestDataFolder>C:\_code\EncryptAndMigrateFiles\_TestData</TestDataFolder>
