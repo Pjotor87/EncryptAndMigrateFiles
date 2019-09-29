@@ -34,7 +34,6 @@ The project needs a large file for running tests and GitHub won't allow uploadin
 
 # TODO (Medium)
 - Remove Try/Catch for when BitsTransfer module fails to import and replace with a test for PowerShell version
-- Add switches in Config.xml file to select which processes to run or skip
 - Remove dependency to 7zip4Powershell
 
 # TODO (Low)
