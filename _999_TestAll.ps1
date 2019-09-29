@@ -4,5 +4,6 @@ Invoke-Expression "& `"$PSScriptRoot\_900_ResetTestData.ps1`""
 cls
 Write-Output "Running entire process..."
 Invoke-Expression "& `"$PSScriptRoot\Send.ps1`""
+Invoke-Expression "& `"$PSScriptRoot\_910_SetupReceiveTest.ps1`""
 Invoke-Expression "& `"$PSScriptRoot\Receive.ps1`""
 Write-Output "Entire process has run!"

@@ -26,7 +26,7 @@
 		<!--The folder where encrypted archives will be unzipped to-->
 		<TargetUnzipFolder>C:\_code\EncryptAndMigrateFiles\230_targetReceiveUnzipFolder</TargetUnzipFolder>
 	</Receive>
-	<Tests IncludeLargeFiles="True">
+	<Tests IncludeLargeFiles="True" UseSameTestContentForReceiveAndSend="True">
 		<TestDataFolder>C:\_code\EncryptAndMigrateFiles\_TestData</TestDataFolder>
 	</Tests>
 </Root>
