@@ -13,3 +13,4 @@ if($config.Root.Tests.UseSameTestContentForReceiveAndSend -eq "True"){
 		Copy-item -Verbose -Recurse -path $_.FullName -Destination ($receiveSourceFolder + "\" + $_.Name)
 	}
 }
+[System.GC]::Collect()

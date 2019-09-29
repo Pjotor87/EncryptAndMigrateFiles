@@ -48,3 +48,4 @@ foreach($folder in $folders){
 ### Remove large test file ###
 $largeTestfilePath = ($config.Root.Tests.TestDataFolder + "\" + "Unzipped" + "\" + "LargeFile.txt")
 Remove-Item -Path $largeTestfilePath
+[System.GC]::Collect()

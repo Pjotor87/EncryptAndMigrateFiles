@@ -41,3 +41,4 @@ Get-ChildItem -Verbose -Path ($config.Root.Tests.TestDataFolder + "\" + "Zipped"
 }
 
 Get-ChildItem -Verbose -Path $PSScriptRoot "*.txt" | foreach { Remove-Item -Verbose $_.FullName }
+[System.GC]::Collect()

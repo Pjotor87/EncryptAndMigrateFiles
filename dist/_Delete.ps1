@@ -79,3 +79,4 @@ if($unhandledItems.Count -gt 0){
 } else {
 	Write-Output "Bad operationTypeToDelete parameter value passed to PowerShell Script"
 }
+[System.GC]::Collect()

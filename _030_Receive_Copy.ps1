@@ -59,8 +59,10 @@ foreach ($item in $items){
 			$unhandledItems += $exceptionMessage
 		}
 		$i = $i + 1
+		[System.GC]::Collect()
 	}
 }
 Remove-Item -Path $progressFilePath
 
 Write-LogInfo $unhandledItems $errorsPath
+[System.GC]::Collect()

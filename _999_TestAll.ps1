@@ -35,3 +35,4 @@ if($folderContentDiffrences -eq $null -or ($folderContentDiffrences.InputObject.
 	$folderContentDiffrences
 }
 $host.ui.RawUI.ForegroundColor = $originalConsoleColor
+[System.GC]::Collect()
