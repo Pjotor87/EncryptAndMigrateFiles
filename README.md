@@ -8,9 +8,7 @@ Also does zipping, unzipping, encryption and decryption of the files being copie
 ![Sketch](/_Docs/Sketch.png?raw=true "Sketch")
 
 # Dependencies
-PowerShell version 5 or higher
-Uses the PowerShell module "7zip4PowerShell" to do unzip operations (PowerShell will prompt for installation of this module when running)
-7zip command line
+7zip command line (https://www.7-zip.org/download.html)
 
 # How to use
 1. Clone the project
@@ -34,7 +32,6 @@ The project needs a large file for running tests and GitHub won't allow uploadin
 
 # TODO (Medium)
 - Remove Try/Catch for when BitsTransfer module fails to import and replace with a test for PowerShell version
-- Remove dependency to 7zip4Powershell
 
 # TODO (Low)
 - Add progress to the Progress files created during each operation
