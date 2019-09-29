@@ -8,7 +8,7 @@ Also does zipping, unzipping, encryption and decryption of the files being copie
 ![Sketch](/_Docs/Sketch.png?raw=true "Sketch")
 
 # Dependencies
-7zip command line
+7zip command line (https://www.7-zip.org/download.html)
 
 # How to use
 1. Clone the project
