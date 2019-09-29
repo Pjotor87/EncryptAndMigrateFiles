@@ -7,7 +7,7 @@ Write-Output "Running entire process..."
 $sendStopwatch = [system.diagnostics.stopwatch]::StartNew()
 Invoke-Expression "& `"$PSScriptRoot\Send.ps1`""
 $sendStopwatch.Stop()
-Invoke-Expression "& `"$PSScriptRoot\_910_SetupReceiveTest.ps1`""
+if($config.Root.Tests.UseSameTestContentForReceiveAndSend -eq "True"){ Invoke-Expression "& `"$PSScriptRoot\_910_SetupReceiveTest.ps1`"" }
 $receiveStopwatch = [system.diagnostics.stopwatch]::StartNew()
 Invoke-Expression "& `"$PSScriptRoot\Receive.ps1`""
 $receiveStopwatch.Stop()
