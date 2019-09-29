@@ -15,12 +15,11 @@ $folders += $config.Root.Receive.SourceFolder
 $folders += $config.Root.Receive.TargetCopyFolder
 $folders += $config.Root.Receive.TargetUnzipFolder
 
-$fso = New-Object -ComObject scripting.filesystemobject
 foreach($folder in $folders){
 	if(Test-Path $folder -PathType Container){
-		$fso.DeleteFolder($folder)
+		Remove-Item $folder -Recurse
 	}
-	$fso.CreateFolder($folder)
+	New-Item -Path $folder -ItemType directory
 }
 
 $largeFiles = @()

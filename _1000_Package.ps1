@@ -41,10 +41,9 @@ $folders += $config.Root.Receive.SourceFolder
 $folders += $config.Root.Receive.TargetCopyFolder
 $folders += $config.Root.Receive.TargetUnzipFolder
 
-$fso = New-Object -ComObject scripting.filesystemobject
 foreach($folder in $folders){
-	$fso.DeleteFolder($folder)
-	$fso.CreateFolder($folder)
+	Remove-Item $folder -Recurse
+	New-Item -Path $folder -ItemType directory
 }
 ### Remove large test file ###
 $largeTestfilePath = ($config.Root.Tests.TestDataFolder + "\" + "Unzipped" + "\" + "LargeFile.txt")

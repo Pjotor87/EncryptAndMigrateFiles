@@ -4,11 +4,10 @@ if($config.Root.Tests.UseSameTestContentForReceiveAndSend -eq "True"){
 	$sendTargetCopyFolder = $config.Root.Send.TargetCopyFolder
 	$receiveSourceFolder = $config.Root.Receive.SourceFolder
 	
-	$fso = New-Object -ComObject scripting.filesystemobject
 	if(Test-Path $receiveSourceFolder -PathType Container){
-		$fso.DeleteFolder($receiveSourceFolder)
+		Remove-Item $receiveSourceFolder -Recurse
 	}
-	$fso.CreateFolder($receiveSourceFolder)
+	New-Item -Path $receiveSourceFolder -ItemType directory
 	
 	Get-ChildItem -Verbose -Path $sendTargetCopyFolder | Foreach-object { 
 		Copy-item -Verbose -Recurse -path $_.FullName -Destination ($receiveSourceFolder + "\" + $_.Name)
