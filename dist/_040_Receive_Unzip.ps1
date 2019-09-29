@@ -42,7 +42,7 @@ foreach ($item in $items){
 			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			
 			$stopwatch = [system.diagnostics.stopwatch]::StartNew()
-			Invoke-Expression ("7z x -mhe=on -p" + $encryptionPassword + " '" + $sourceFolder + "\" + $item.Name + "' -o'" + $targetFolder + "'")
+			Invoke-Expression ("7z x -mhe=on -p'" + $encryptionPassword + "' '" + $sourceFolder + "\" + $item.Name + "' -o'" + $targetFolder + "'")
 			Write-Output ("Time it took to complete process: " + $stopwatch.Elapsed)
 			
 			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
