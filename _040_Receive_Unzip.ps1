@@ -1,5 +1,4 @@
 . ($PSScriptRoot + "\_Functions.ps1")
-Install-Module -Name "7Zip4PowerShell" -Verbose
 [xml]$config = Get-Content -Path ($PSScriptRoot + "\" + "Config.xml")
 $encryptionPassword = $config.Root.EncryptionPassword
 $unhandledItems = @()
@@ -44,7 +43,7 @@ foreach ($item in $items){
 			Set-ProgressStarted $progressFilePath $progressStartText $item.Name $i
 			
 			$stopwatch = [system.diagnostics.stopwatch]::StartNew()
-			Expand-7Zip -ArchiveFileName ($sourceFolder + "\" + $item.Name) -TargetPath ($targetFolder) -Password $encryptionPassword
+			Invoke-Expression ("7z x -mhe=on -p" + $encryptionPassword + " '" + $sourceFolder + "\" + $item.Name + "' -o'" + $targetFolder + "'")
 			Write-Output ("Time it took to complete process: " + $stopwatch.Elapsed)
 			
 			Set-ProgressCompleted $progressFilePath $progressEndText $deletionReadyPath ($sourceFolder + "\" + $item.Name) $operationType
