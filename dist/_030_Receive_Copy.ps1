@@ -13,7 +13,6 @@ $progressFilePath = ($PSScriptRoot + "\" + "InProgress_" + $operationType + ".tx
 
 $zippedFilenameStartsWith = "_data"
 $zippedFilenameExtension = ".7z"
-$excludeFiles = @("_010_Zip.ps1", "_020_Copy.ps1", "_030_Unzip.ps1")
 
 $progressStartText = "## Begin ##"
 $progressEndText = "## End ##"
@@ -34,7 +33,7 @@ foreach ($item in $items){
 	}
 	$beginFile = ""
 
-	if($item.Name.StartsWith($zippedFilenameStartsWith) -and $item.Name.EndsWith($zippedFilenameExtension) -or !($excludeFiles.Contains($item.Name))){
+	if($item.Name.StartsWith($zippedFilenameStartsWith) -and $item.Name.EndsWith($zippedFilenameExtension)){
 		$archiveFilename = $item.Name
 		$archiveTargetPath = ($targetFolder + "\" + $archiveFilename)
 		try
